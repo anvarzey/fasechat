@@ -1,0 +1,40 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Lato:ital,wght@0,300;0,400;1,400;1,700&display=swap');
+
+:root{
+  --primary: rgb(42, 151, 215);
+  --secondary: rgb(177, 215, 255);
+  --background: rgb(146, 184, 203);
+  --font-user: 'Itim', cursive;
+  --font-primary: 'Lato', sans-serif;
+}
+
+html{
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing: inherit;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+  background: url('../public/cool-background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font-primary);
+  font-weight: 300;
+}

@@ -1,0 +1,82 @@
+/*-------- CONTAINER OF ALL MESSAGE DATA --------*/
+.container{
+  max-width: 45%;
+  margin-block: 1rem;
+  border-radius: 0 10px 10px 10px;
+  background-color: #ffffff;
+  flex-direction: column;
+  padding-right: 2rem;
+  font-weight: 500;
+  min-width: 5rem;
+}
+
+.container[own= 'true']{
+  align-self: flex-end;
+  background-color: #4c98e9;
+  background-color: var(--primary);
+  border-radius: 10px 10px 0 10px;
+  padding: 0.75rem;
+}
+
+/*-------- USERNAME AND AVATAR CONTAINER (IF THE MESSAGE WAS SENT FROM OTHER USER) --------*/
+
+.userContainer{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  top: -1rem;
+  left: 0;
+}
+
+.avatarContainer{
+  overflow: hidden;
+  width: min(5vw , 2rem);
+  height: min(5vw , 2rem);
+  border-radius: 0 0 70% 0;
+  position: relative;
+}
+
+/*-------- USERNAME CONTAINER --------*/
+
+.owner{
+  font-size: clamp(0.751rem, 1.75vw, 0.95rem);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  text-align: end;
+  font-family: var(--font-user);
+  color: #2c5858;
+  text-overflow: ellipsis;
+  font-weight: 400;
+}
+
+/*-------- IMAGE CONTAINER (IF THE MESSAGE HAS ONE) --------*/
+
+.imageContainer{
+  width: min(16vw, 9rem);
+  height: min(14vw, 7rem);
+  position: relative;
+  cursor: pointer;
+  margin-inline: auto;
+  margin-left: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.container[own= 'true'] .imageContainer{
+  margin-top: 0;
+}
+
+/*-------- MESSAGE --------*/
+
+.container p{
+  margin: 0 0 0.5rem;
+  color: rgb(2, 7, 69);
+  margin-left: 1.3rem;
+  font-size: clamp(0.751rem, 2vw, 1rem);
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+.container[own= 'true'] p{
+  color: white;
+  margin: 0;
+}

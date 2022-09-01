@@ -1,0 +1,82 @@
+/*-------- HEADER --------*/
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+}
+
+/*-------- FASECHAT LOGO --------*/
+
+.logoContainer{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoContainer h1{
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: rgb(255, 255, 255);
+}
+
+/*-------- LOGOUT CONTAINER --------*/
+
+.logoutContainer{
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: whitesmoke;
+  text-decoration: none;
+  color: darkgray;
+  transition: background-color 200ms ease;
+}
+
+.logoutContainer i{
+  font-size: 1.5rem;
+  color: red;
+}
+
+.logoutContainer span {
+  display: none;
+  text-decoration: none;
+  color: black;
+  height: 1.2rem;
+}
+
+@media screen and (min-width: 900px) {
+  .logoutContainer{
+    width: 8rem;
+    border-radius: 5rem;
+    gap: 1rem;
+  }
+
+
+  .logoutContainer span{
+    display: block;
+    height: 1.2rem;
+  }
+
+}
+
+@media (hover: hover){
+
+  .logoutContainer:hover{
+    background-color: rgb(254, 47, 47);
+  }
+
+  .logoutContainer:hover i{
+    color: white;
+  }
+
+  .logoutContainer:hover span{
+    color: white;
+  }
+
+}

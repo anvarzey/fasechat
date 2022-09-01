@@ -1,0 +1,100 @@
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: whitesmoke;
+  text-decoration: none;
+  color: black;
+  transition: background-color 200ms ease;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn i{
+  font-size: 1.25rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red i{
+  color: red;
+}
+
+.green{
+  border: 1px solid rgb(50, 180, 60);
+}
+
+.green i{
+  color: rgb(18, 113, 26);
+}
+
+.green:disabled i{
+  color: inherit;
+}
+
+.btn:disabled,
+.btn:disabled:hover{
+  background-color: rgba(245, 245, 245, 0.607);
+  border: 1px solid black;
+  color: rgb(74, 74, 74);
+  cursor: default;
+}
+
+.text{
+  display: none;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.altText{
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .btn{
+    border-radius: 5rem;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .text{
+    display: block;
+  }
+
+}
+
+@media (hover: hover){
+  .btn:hover i,
+  .btn:hover .text{
+    color: white;
+  }
+
+  .btn:disabled:hover .text{
+    color: inherit;
+  }
+
+  .cyan:hover{
+    background-color: rgb(15, 175, 135);
+  }
+
+  .red:hover{
+    background-color: rgb(254, 47, 47);
+  }
+
+  .green:hover{
+    background-color: rgb(50, 180, 60);
+    color: white;
+  }
+
+  .green:hover i{
+    color: inherit;
+  }
+
+}
