@@ -31,7 +31,7 @@ body{
   overflow: hidden;
   display: grid;
   place-content: center;
-  background: url('../public/cool-background.png');
+  background: url('/cool-background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
