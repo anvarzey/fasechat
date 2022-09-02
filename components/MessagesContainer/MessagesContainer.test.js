@@ -75,7 +75,7 @@ describe('list of messages are provided', () => {
 test('refresh is received as true, it should call scroller and handleRefresh functions', async () => {
   fakeProps.refresh = true
 
-  window.HTMLElement.prototype.scrollTo = jest.fn()
+  window.HTMLElement.prototype.scroll = jest.fn()
 
   render(<MessagesContainer handleRefresh={fakeProps.handleRefresh} refresh={fakeProps.refresh} setModal={fakeProps.setModal} />)
 

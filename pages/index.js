@@ -18,9 +18,8 @@ export default function Login () {
         <title>Fasechat</title>
         <link rel='icon' href='/tablogo.jpg' />
       </Head>
-      {/* By default user is undefined, so the login component might not be visible until firebase responds that the user is not logged */}
       {
-        user === null && <LoginComponent />
+        !user && <LoginComponent />
       }
     </div>
   )

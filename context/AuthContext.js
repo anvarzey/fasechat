@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useState
 } from 'react'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
@@ -36,17 +37,19 @@ function AuthProvider ({ children }) {
     signOut(auth)
   }
 
-  onAuthStateChanged(auth, (res) => {
-    if (res) {
-      const modifiedUser = {
-        username: res.email.slice(0, -10),
-        avatar: res.photoURL
+  useEffect(() => {
+    onAuthStateChanged(auth, (res) => {
+      if (res) {
+        const modifiedUser = {
+          username: res.email.slice(0, -10),
+          avatar: res.photoURL
+        }
+        setUser(modifiedUser)
+      } else {
+        setUser(null)
       }
-      setUser(modifiedUser)
-    } else {
-      setUser(null)
-    }
-  })
+    })
+  }, [auth])
 
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>

@@ -12,10 +12,10 @@ export default function MessagesContainer ({ handleRefresh, refresh, setModal })
     incrementByTen
   } = useMessages()
 
-  const scroller = () => {
-    const currentSize = chatContainer.current.scrollHeight
-    chatContainer.current.scrollTo({
-      top: currentSize,
+  const scroller = (height) => {
+    const size = height === 'all' ? chatContainer.current.scrollHeight : 600
+    chatContainer.current.scroll({
+      top: size,
       left: 0,
       behavior: 'smooth'
     })
@@ -23,19 +23,14 @@ export default function MessagesContainer ({ handleRefresh, refresh, setModal })
 
   useEffect(() => {
     if (refresh && messages.length) {
-      scroller()
+      scroller('all')
       handleRefresh()
     }
-  }, [refresh, handleRefresh, messages.length])
+  }, [refresh, handleRefresh, messages?.length])
 
   const handleClick = async () => {
     await incrementByTen()
-
-    chatContainer.current.scroll({
-      top: 600,
-      left: 0,
-      behavior: 'smooth'
-    })
+    scroller()
   }
 
   return (
