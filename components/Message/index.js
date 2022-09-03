@@ -19,11 +19,11 @@ export default function Message ({ avatar, image, setModal, text, username }) {
               {
               avatar &&
                 <Image
-                  src={avatar}
+                  alt={`${username}'s avatar`}
                   layout='fill'
                   objectFit='cover'
                   objectPosition='center'
-                  alt={`${username}'s avatar`}
+                  src={avatar}
                 />
               }
             </span>
@@ -34,13 +34,13 @@ export default function Message ({ avatar, image, setModal, text, username }) {
       }
       {
         image &&
-          <div onClick={handleModal} className={styles.imageContainer}>
+          <div className={styles.imageContainer} onClick={handleModal}>
             <Image
-              src={image}
-              layout='fill'
               alt={`image sent by ${username}`}
+              layout='fill'
               objectFit='contain'
               objectPosition='center'
+              src={image}
             />
           </div>
       }

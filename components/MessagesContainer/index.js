@@ -8,16 +8,16 @@ export default function MessagesContainer ({ handleRefresh, refresh, setModal })
 
   const {
     disabled,
-    messages,
-    incrementByTen
+    incrementByTen,
+    messages
   } = useMessages()
 
   const scroller = (height) => {
     const size = height === 'all' ? chatContainer.current.scrollHeight : 600
     chatContainer.current.scroll({
-      top: size,
+      behavior: 'smooth',
       left: 0,
-      behavior: 'smooth'
+      top: size
     })
   }
 
@@ -35,7 +35,7 @@ export default function MessagesContainer ({ handleRefresh, refresh, setModal })
 
   return (
     <section className={styles.container} ref={chatContainer}>
-      <button onClick={handleClick} disabled={disabled} className={styles.btn}>
+      <button className={styles.btn} disabled={disabled} onClick={handleClick}>
         Load more messages
       </button>
       {
@@ -43,9 +43,9 @@ export default function MessagesContainer ({ handleRefresh, refresh, setModal })
           messages.length !== 0 &&
             messages.map(msg =>
               <Message
-                key={msg.key}
                 avatar={msg.avatar}
                 image={msg.image || null}
+                key={msg.key}
                 setModal={setModal}
                 text={msg.message}
                 username={msg.username}

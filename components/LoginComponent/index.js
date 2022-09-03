@@ -13,7 +13,7 @@ export default function LoginComponent () {
   return (
     <div className={styles.container}>
       <label className={styles.logoContainer}>
-        <Image src={logo} alt='logo' width={100} height={100} />
+        <Image alt='logo' height={100} src={logo} width={100} />
         Fasechat
       </label>
       <h2 className={styles.title}>

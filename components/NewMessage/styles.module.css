@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   bottom: 0;
-  gap: 2rem;
+  gap: max(0.5rem, 2vw);
 }
 
 /*-------- ADD IMAGE BUTTON --------*/
@@ -41,7 +41,7 @@
 /*-------- MESSAGE AREA CONTAINER --------*/
 
 .messageContainer{
-  width: min(75%, 50rem);
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,29 +83,6 @@
   background-color: lightcoral;
   border: none;
   color: white;
-}
-
-/*-------- AVATAR AND TEXTAREA --------*/
-
-.msgAreaContainer{
-  width: 100%;
-  display: flex;
-  padding: 0.25rem 1.25rem;
-  border-radius: 2rem;
-  align-items: center;
-  background-color: white;
-}
-
-.msgAreaContainer[resize= 'true']{
-  border-radius: 0 0 2rem 2rem;
-}
-
-.avatarContainer{
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 }
 
 /*-------- SEND BUTTON --------*/
@@ -156,6 +133,12 @@
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .container{
+    padding-inline: 5rem;
+  }
+}
+
 @media (hover: hover) {
 
   .imgIconContainer:hover{
@@ -173,6 +156,5 @@
   .sendBtn:hover i{
     color: inherit;
   }
-
 
 }

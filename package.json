@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@eslint/create-config": "0.3.1",
+    "emoji-picker-react": "3.6.1",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.2.5",
@@ -19,8 +20,7 @@
     "firebase": "9.9.3",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-input-emoji": "4.1.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",

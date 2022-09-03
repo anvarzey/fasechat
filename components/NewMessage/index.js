@@ -1,9 +1,9 @@
 import styles from './styles.module.css'
-import InputEmoji from 'react-input-emoji'
 import Image from 'next/image'
 import useSendMessage from '../../hooks/useSendMessage'
 import { useUser } from '../../context/AuthContext'
 import Button from '../Button'
+import InputMessage from '../InputMessage'
 
 export default function NewMessage ({ handleRefresh, setModal }) {
   const { user } = useUser()
@@ -11,11 +11,12 @@ export default function NewMessage ({ handleRefresh, setModal }) {
     disabledBtn,
     handleChange,
     handleDelete,
+    handleEmojiClick,
     handleImage,
     handleSubmit,
     image,
     message
-  } = useSendMessage({ user, handleRefresh })
+  } = useSendMessage({ handleRefresh, user })
 
   const showPreview = () => {
     setModal({ image: image.preview })
@@ -46,34 +47,25 @@ export default function NewMessage ({ handleRefresh, setModal }) {
               <div className={styles.previewContainer}>
                 <div className={styles.previewImgContainer}>
                   <Image
-                    onClick={showPreview}
-                    src={image.preview}
+                    alt='Preview image to send'
+                    height={100}
                     objectFit='contain'
                     objectPosition='center'
+                    onClick={showPreview}
+                    src={image.preview}
                     width={120}
-                    height={100}
-                    alt='Preview image to send'
                   />
                   <button className={styles.cancelImg} onClick={handleDelete}>X</button>
                 </div>
               </div>
           }
-          <div className={styles.msgAreaContainer} resize={String(Boolean(image))}>
-            <div className={styles.avatarContainer}>
-              <Image
-                src={user.avatar}
-                width={30}
-                height={30}
-                alt={`${user.username}'s avatar`}
-              />
-            </div>
-            <InputEmoji
-              value={message}
-              onChange={handleChange}
-              placeholder='Type a message'
-              borderColor='white'
-            />
-          </div>
+          <InputMessage
+          handleChange={handleChange}
+          handleEmojiClick={handleEmojiClick}
+          message={message}
+          resize={String(Boolean(image))}
+          user={user}
+          />
         </div>
         <Button color='green' disabled={disabledBtn} icon='bi bi-send' text='Send' />
       </form>

@@ -1,0 +1,45 @@
+.container{
+  width: 100%;
+  display: flex;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  align-items: center;
+  background-color: white;
+  gap: 0.5rem;
+}
+
+.container[resize= 'true']{
+  border-radius: 0 0 2rem 2rem;
+}
+
+.avatarContainer{
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.textarea{
+  border: none;
+  font-family: var(--font-primary);
+  resize: none;
+  outline: none;
+  flex-grow: 1;
+  height: 1.6rem;
+}
+
+.pickerContainer{
+  position: relative;
+}
+
+.pickerContainer i{
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+  .container{
+    gap: 1rem;
+  }
+}

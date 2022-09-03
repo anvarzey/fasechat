@@ -10,9 +10,10 @@ export default function useSendMessage ({ handleRefresh, user }) {
   const [image, setImage] = useState(null)
   const { incrementByOne } = useMessages()
 
-  const handleChange = (text) => {
-    setMessage(text)
-    const disabled = !text
+  const handleChange = (e) => {
+    const { value } = e.target
+    setMessage(value)
+    const disabled = !value.length
     setDisabledBtn(disabled)
   }
 
@@ -27,16 +28,17 @@ export default function useSendMessage ({ handleRefresh, user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const regex = /\w+/ig
+    const regex = /[\S\s]+[\S]+/
     if (!regex.test(message) && !image) {
       setMessage('')
+      setDisabledBtn(true)
       alert('Type a valid message')
       return
     }
     if (image) {
       uploadPhoto(image.file)
         .then(res => getDownloadURL(res.ref))
-        .then((downloadURL) => sendMessage({ avatar: user.avatar, message, username: user.username, image: downloadURL }))
+        .then((downloadURL) => sendMessage({ avatar: user.avatar, image: downloadURL, message, username: user.username }))
     } else {
       sendMessage({ avatar: user.avatar, message, username: user.username })
     }
@@ -52,10 +54,16 @@ export default function useSendMessage ({ handleRefresh, user }) {
     setDisabledBtn(true)
   }
 
+  const handleEmojiClick = (event, emojiObject) => {
+    setMessage(message + emojiObject.emoji)
+    if (disabledBtn) setDisabledBtn(false)
+  }
+
   return {
     disabledBtn,
     handleChange,
     handleDelete,
+    handleEmojiClick,
     handleImage,
     handleSubmit,
     image,
