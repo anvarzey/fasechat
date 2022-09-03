@@ -1,6 +1,6 @@
 # Firebase Chat
 
-## ▶️ **[DEMO](https://fasechat.vercel.app/)**
+## ▶️ **[Demo](https://fasechat.vercel.app/)**
 
 Create a chat application using [Firebase](https://firebase.google.com/) as your backend.
 
