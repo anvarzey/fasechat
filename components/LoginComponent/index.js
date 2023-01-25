@@ -4,7 +4,7 @@ import logo from '../../public/logo2.png'
 import { useUser } from '../../context/AuthContext'
 
 export default function LoginComponent () {
-  const { handleLogin, user } = useUser()
+  const { handleGuest, handleLogin, user } = useUser()
 
   const handleClick = async () => {
     await handleLogin()
@@ -22,21 +22,24 @@ export default function LoginComponent () {
       {/* By default user is undefined, so the login button might not be visible until firebase responds that the user is not logged */}
         {
           user === null &&
-            <button onClick={handleClick} className={styles.btn}>
-              <span className={styles.line} />
-              <span className={styles.line} />
-              <span className={styles.line} />
-              <span className={styles.line} />
-              <span className={styles.googleContainer}>
-                <Image
-                  alt='Google logo'
-                  height={40}
-                  src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
-                  width={40}
-                />
-              </span>
-              Sign in with Google
-            </button>
+            <>
+              <button onClick={handleClick} className={styles.btn}>
+                <span className={styles.line} />
+                <span className={styles.line} />
+                <span className={styles.line} />
+                <span className={styles.line} />
+                <span className={styles.googleContainer}>
+                  <Image
+                    alt='Google logo'
+                    height={40}
+                    src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
+                    width={40}
+                  />
+                </span>
+                Sign in with Google
+              </button>
+              <button onClick={handleGuest} className={styles.guestBtn}>Enter as guest</button>
+            </>
         }
     </div>
   )

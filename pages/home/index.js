@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '../../context/AuthContext'
 import styles from './styles.module.css'
+import GuestFooter from '../../components/GuestFooter'
 
 export default function Home () {
   const { user } = useUser()
@@ -38,8 +39,14 @@ export default function Home () {
               refresh={refresh}
               handleRefresh={handleRefresh}
             />
-            <ModalImage modal={modal} setModal={setModal} />
-            <NewMessage setModal={setModal} handleRefresh={handleRefresh} />
+            {
+            user.username === 'Guest'
+              ? <GuestFooter />
+              : <>
+                <ModalImage modal={modal} setModal={setModal} />
+                <NewMessage setModal={setModal} handleRefresh={handleRefresh} />
+              </>
+              }
           </div>
         </div>
         : <Loader />}

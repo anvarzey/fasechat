@@ -1,7 +1,8 @@
 import {
   getRedirectResult,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  signInAnonymously
 } from 'firebase/auth'
 
 import { auth, provider } from './config'
@@ -13,6 +14,18 @@ export const logIn = () => signInWithPopup(auth, provider)
     const user = result.user
     return { credential, token, user }
   }).catch((error) => {
+    const errorCode = error.code
+    const errorMessage = error.message
+
+    return { code: errorCode, message: errorMessage }
+  })
+
+export const logInGuest = () => signInAnonymously(auth)
+  .then((result) => {
+    const user = result.user
+    return { user }
+  })
+  .catch((error) => {
     const errorCode = error.code
     const errorMessage = error.message
 

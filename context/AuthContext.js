@@ -5,7 +5,7 @@ import {
   useState
 } from 'react'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { logIn } from '../firebase/auth'
+import { logIn, logInGuest } from '../firebase/auth'
 import { auth } from '../firebase/config'
 
 const AuthContext = createContext()
@@ -37,12 +37,34 @@ function AuthProvider ({ children }) {
     signOut(auth)
   }
 
+  function handleGuest () {
+    logInGuest().then(res => {
+      if (!res.user) {
+        setUser(null)
+      } else {
+        const modifiedUser = {
+          username: 'Guest',
+          avatar: undefined
+        }
+        setUser(modifiedUser)
+      }
+    })
+  }
+
   useEffect(() => {
     onAuthStateChanged(auth, (res) => {
       if (res) {
-        const modifiedUser = {
-          username: res.email.slice(0, -10),
-          avatar: res.photoURL
+        let modifiedUser
+        if (res.email !== null) {
+          modifiedUser = {
+            username: res.email.slice(0, -10),
+            avatar: res.photoURL
+          }
+        } else {
+          modifiedUser = {
+            username: 'Guest',
+            avatar: undefined
+          }
         }
         setUser(modifiedUser)
       } else {
@@ -52,7 +74,7 @@ function AuthProvider ({ children }) {
   }, [auth])
 
   return (
-    <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
+    <AuthContext.Provider value={{ user, handleGuest, handleLogin, handleLogout }}>
       {children}
     </AuthContext.Provider>
   )
